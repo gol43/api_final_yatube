@@ -1,5 +1,4 @@
 from pathlib import Path
-
 from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,9 +17,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
     'api',
     'posts',
 ]
+# djoser тут взят из 1 темы и 13 урока, 8 спринта
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,7 +88,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+# Изначально хотел изменить на MEDIA и URL, и ROOT, но увидел ошибку при runserver.
+# Видел во второй теме и 1 уроке, что так делают. Думаю, что нужно следовать теории до конца.
+# Не знаю, почему после git clone всё было написано други образом.
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ((BASE_DIR / 'static/'),)
 
@@ -94,7 +98,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 }
-
+# не понимаю зачем это, но оставлю..
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1861),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+# Не понимаю, почему если я в прошлом спринте вставлял вместо "..Bearer.."- "..fol43..". А сейчас это не работает

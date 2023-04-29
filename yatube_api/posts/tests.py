@@ -1,3 +1,1 @@
-from django.test import TestCase
-
-# Create your tests here.
+# Можно останется опять для души? Вновь жакло дэлитать.

@@ -1,3 +1,1 @@
-from django.contrib import admin
-
-# Register your models here.
+# Можно останется опять для души? Вновь жакло дэлитать.

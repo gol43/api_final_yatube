@@ -1,3 +1,1 @@
-from django.shortcuts import render
-
-# Create your views here.
+# Можно останется опять для души? Вновь жакло дэлитать.
