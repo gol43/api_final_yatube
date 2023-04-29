@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 from posts.models import Group, Post, Comment, Follow, User
-# Не понимаю, для чего было убирать серилизатор из git clone,
+# Не понимаю, для чего было убирать серилизатор для Group из git clone,
 # если в предыдущем спринте было то же самое
 from rest_framework.validators import UniqueTogetherValidator
 
@@ -33,7 +33,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class FollowSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(
-        read_only=True,
+        queryset=User.objects.all(),
         slug_field='username',
         default=serializers.CurrentUserDefault()
     )
