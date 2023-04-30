@@ -49,9 +49,6 @@ class FollowSerializer(serializers.ModelSerializer):
         default=serializers.CurrentUserDefault())
 
     class Meta:
-        # ToDo items belong to a parent list, and have an ordering defined
-        # by the 'position' field. No two items in a given list may share
-        # the same position.
         queryset = Follow.objects.all()
         fields_for_val = ('user', 'following')
         message = 'Yoo, man, u did that already'
